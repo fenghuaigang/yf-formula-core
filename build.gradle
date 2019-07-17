@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.sgcc'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url 'http://192.168.60.23:9012/repository/maven-public/' }
+ 	maven { url 'https://maven.aliyun.com/repository/public/' }
+ 	mavenLocal() 
+ 	mavenCentral()
+}
+
+dependencies {
+
+}

@@ -1,0 +1,10 @@
+.metadata
+Servers
+.settings
+build
+*.classpath
+*.project
+.gradle
+bin
+.idea
+*.iml
