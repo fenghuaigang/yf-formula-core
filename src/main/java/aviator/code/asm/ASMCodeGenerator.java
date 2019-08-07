@@ -182,7 +182,7 @@ public class ASMCodeGenerator implements CodeGenerator {
     if (this.operandsCount > 0) {
       this.loadEnv();
       this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorObject",
-          "getValue", "(Ljava/util/Map;)Ljava/lang/Object;");
+          "getValue", "(Ljava/utils/Map;)Ljava/lang/Object;");
       this.mv.visitInsn(ARETURN);
       this.popOperand();
       this.popOperand();
@@ -213,13 +213,13 @@ public class ASMCodeGenerator implements CodeGenerator {
   private void makeConstructor() {
     {
       this.mv = this.classWriter.visitMethod(ACC_PUBLIC, "<init>",
-          "(Laviator/AviatorEvaluatorInstance;Ljava/util/List;)V", null, null);
+          "(Laviator/AviatorEvaluatorInstance;Ljava/utils/List;)V", null, null);
       this.mv.visitCode();
       this.mv.visitVarInsn(ALOAD, 0);
       this.mv.visitVarInsn(ALOAD, 1);
       this.mv.visitVarInsn(ALOAD, 2);
       this.mv.visitMethodInsn(INVOKESPECIAL, "aviator/ClassExpression", "<init>",
-          "(Laviator/AviatorEvaluatorInstance;Ljava/util/List;)V");
+          "(Laviator/AviatorEvaluatorInstance;Ljava/utils/List;)V");
       if (!this.innerVars.isEmpty()) {
         for (Map.Entry<String, String> entry : this.innerVars.entrySet()) {
           String outterName = entry.getKey();
@@ -335,7 +335,7 @@ public class ASMCodeGenerator implements CodeGenerator {
 
     this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorJavaType",
         "setValue",
-        "(Laviator/runtime/type/AviatorObject;Ljava/util/Map;)Laviator/runtime/type/AviatorObject;");
+        "(Laviator/runtime/type/AviatorObject;Ljava/utils/Map;)Laviator/runtime/type/AviatorObject;");
     this.popOperand();
     this.popOperand();
     this.popOperand();
@@ -377,7 +377,7 @@ public class ASMCodeGenerator implements CodeGenerator {
 
   private void visitBoolean() {
     this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorObject",
-        "booleanValue", "(Ljava/util/Map;)Z");
+        "booleanValue", "(Ljava/utils/Map;)Z");
   }
 
 
@@ -424,7 +424,7 @@ public class ASMCodeGenerator implements CodeGenerator {
       this.loadOpType(opType);
       this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/op/OperationRuntime",
           "eval",
-          "(Laviator/runtime/type/AviatorObject;Ljava/util/Map;Laviator/runtime/type/AviatorObject;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
+          "(Laviator/runtime/type/AviatorObject;Ljava/utils/Map;Laviator/runtime/type/AviatorObject;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
       this.popOperand();
     }
   }
@@ -572,7 +572,7 @@ public class ASMCodeGenerator implements CodeGenerator {
   private void visitCompare(int ints, OperatorType opType) {
     if (!OperationRuntime.hasRuntimeContext(this.compileEnv, opType)) {
       this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorObject",
-          "compare", "(Laviator/runtime/type/AviatorObject;Ljava/util/Map;)I");
+          "compare", "(Laviator/runtime/type/AviatorObject;Ljava/utils/Map;)I");
       Label l0 = this.makeLabel();
       Label l1 = this.makeLabel();
       this.mv.visitJumpInsn(ints, l0);
@@ -587,7 +587,7 @@ public class ASMCodeGenerator implements CodeGenerator {
       this.loadOpType(opType);
       this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/op/OperationRuntime",
           "eval",
-          "(Laviator/runtime/type/AviatorObject;Laviator/runtime/type/AviatorObject;Ljava/util/Map;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
+          "(Laviator/runtime/type/AviatorObject;Laviator/runtime/type/AviatorObject;Ljava/utils/Map;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
       this.popOperand();
     }
 
@@ -647,13 +647,13 @@ public class ASMCodeGenerator implements CodeGenerator {
       this.loadEnv();
       this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorObject",
           methodName,
-          "(Laviator/runtime/type/AviatorObject;Ljava/util/Map;)Laviator/runtime/type/AviatorObject;");
+          "(Laviator/runtime/type/AviatorObject;Ljava/utils/Map;)Laviator/runtime/type/AviatorObject;");
     } else {
       this.loadEnv();
       this.loadOpType(opType);
       this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/op/OperationRuntime",
           "eval",
-          "(Laviator/runtime/type/AviatorObject;Laviator/runtime/type/AviatorObject;Ljava/util/Map;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
+          "(Laviator/runtime/type/AviatorObject;Laviator/runtime/type/AviatorObject;Ljava/utils/Map;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
       this.popOperand();
     }
     this.popOperand();
@@ -666,12 +666,12 @@ public class ASMCodeGenerator implements CodeGenerator {
 
     if (!OperationRuntime.hasRuntimeContext(this.compileEnv, opType)) {
       this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorObject",
-          methodName, "(Ljava/util/Map;)Laviator/runtime/type/AviatorObject;");
+          methodName, "(Ljava/utils/Map;)Laviator/runtime/type/AviatorObject;");
     } else {
       this.loadOpType(opType);
       this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/op/OperationRuntime",
           "eval",
-          "(Laviator/runtime/type/AviatorObject;Ljava/util/Map;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
+          "(Laviator/runtime/type/AviatorObject;Ljava/utils/Map;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
       this.popOperand();
     }
 
@@ -762,7 +762,7 @@ public class ASMCodeGenerator implements CodeGenerator {
           this.mv.visitLdcInsn(numberToken.getLexeme());
           this.mv.visitMethodInsn(INVOKESTATIC,
               "aviator/runtime/type/AviatorDecimal", "valueOf",
-              "(Ljava/util/Map;Ljava/lang/String;)Laviator/runtime/type/AviatorDecimal;");
+              "(Ljava/utils/Map;Ljava/lang/String;)Laviator/runtime/type/AviatorDecimal;");
           this.popOperand();
         } else if (TypeUtils.isDouble(number)) {
           this.mv.visitLdcInsn(number);
@@ -906,7 +906,7 @@ public class ASMCodeGenerator implements CodeGenerator {
 
 
   private static String getInvokeMethodDesc(int paramCount) {
-    StringBuilder sb = new StringBuilder("(Ljava/util/Map;");
+    StringBuilder sb = new StringBuilder("(Ljava/utils/Map;");
     if (paramCount <= 20) {
       for (int i = 0; i < paramCount; i++) {
         sb.append("Laviator/runtime/type/AviatorObject;");
@@ -999,7 +999,7 @@ public class ASMCodeGenerator implements CodeGenerator {
     }
 
     // // add parameter to list
-    // this.mv.visitMethodInsn(INVOKEINTERFACE, "java/util/List", "add",
+    // this.mv.visitMethodInsn(INVOKEINTERFACE, "java/utils/List", "add",
     // "(Ljava/lang/Object;)Z");
     // // pop boolean
     // this.mv.visitInsn(POP);
@@ -1042,12 +1042,12 @@ public class ASMCodeGenerator implements CodeGenerator {
     if (!OperationRuntime.hasRuntimeContext(this.compileEnv, OperatorType.INDEX)) {
       this.mv.visitMethodInsn(INVOKEVIRTUAL, "aviator/runtime/type/AviatorObject",
           "getElement",
-          "(Ljava/util/Map;Laviator/runtime/type/AviatorObject;)Laviator/runtime/type/AviatorObject;");
+          "(Ljava/utils/Map;Laviator/runtime/type/AviatorObject;)Laviator/runtime/type/AviatorObject;");
     } else {
       this.loadOpType(OperatorType.INDEX);
       this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/op/OperationRuntime",
           "eval",
-          "(Laviator/runtime/type/AviatorObject;Ljava/util/Map;Laviator/runtime/type/AviatorObject;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
+          "(Laviator/runtime/type/AviatorObject;Ljava/utils/Map;Laviator/runtime/type/AviatorObject;Laviator/lexer/token/OperatorType;)Laviator/runtime/type/AviatorObject;");
       this.popOperand();
     }
 
@@ -1128,7 +1128,7 @@ public class ASMCodeGenerator implements CodeGenerator {
       this.loadEnv();
       this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/RuntimeUtils",
           "getFunction",
-          "(Ljava/lang/Object;Ljava/util/Map;)Laviator/runtime/type/AviatorFunction;");
+          "(Ljava/lang/Object;Ljava/utils/Map;)Laviator/runtime/type/AviatorFunction;");
       this.popOperand();
     }
     if ((boolean) this.instance.getOption(Options.TRACE_EVAL)) {
@@ -1175,10 +1175,10 @@ public class ASMCodeGenerator implements CodeGenerator {
   // // create argument list
   // this.pushOperand(0);
   // this.pushOperand(0);
-  // this.mv.visitTypeInsn(NEW, "java/util/ArrayList");
+  // this.mv.visitTypeInsn(NEW, "java/utils/ArrayList");
   // this.mv.visitInsn(DUP);
   // this.popOperand();
-  // this.mv.visitMethodInsn(INVOKESPECIAL, "java/util/ArrayList", "<init>",
+  // this.mv.visitMethodInsn(INVOKESPECIAL, "java/utils/ArrayList", "<init>",
   // "()V");
   // // store to local variable
   // final int parameterLocalIndex = this.getLocalIndex();
@@ -1200,7 +1200,7 @@ public class ASMCodeGenerator implements CodeGenerator {
     this.mv.visitLdcInsn(methodName);
     this.mv.visitMethodInsn(INVOKESTATIC, "aviator/runtime/RuntimeUtils",
         "getFunction",
-        "(Ljava/util/Map;Ljava/lang/String;)Laviator/runtime/type/AviatorFunction;");
+        "(Ljava/utils/Map;Ljava/lang/String;)Laviator/runtime/type/AviatorFunction;");
     this.popOperand();
     this.popOperand();
     this.pushOperand();

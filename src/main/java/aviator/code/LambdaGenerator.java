@@ -87,7 +87,7 @@ public class LambdaGenerator implements CodeGenerator {
   private void makeConstructor() {
     {
       this.mv = this.classWriter.visitMethod(ACC_PUBLIC, "<init>",
-          "(Ljava/util/List;Lcom/googlecode/aviator/Expression;Lcom/googlecode/aviator/utils/Env;)V",
+          "(Ljava/utils/List;Lcom/googlecode/aviator/Expression;Lcom/googlecode/aviator/utils/Env;)V",
           null, null);
       this.mv.visitCode();
       this.mv.visitVarInsn(ALOAD, 0);
@@ -96,7 +96,7 @@ public class LambdaGenerator implements CodeGenerator {
       this.mv.visitVarInsn(ALOAD, 3);
       this.mv.visitMethodInsn(INVOKESPECIAL,
           "com/googlecode/aviator/runtime/function/LambdaFunction", "<init>",
-          "(Ljava/util/List;Lcom/googlecode/aviator/Expression;Lcom/googlecode/aviator/utils/Env;)V");
+          "(Ljava/utils/List;Lcom/googlecode/aviator/Expression;Lcom/googlecode/aviator/utils/Env;)V");
 
       this.mv.visitInsn(RETURN);
       this.mv.visitMaxs(4, 1);
@@ -134,8 +134,8 @@ public class LambdaGenerator implements CodeGenerator {
       String argsDec = argsDescSb.toString();
 
       this.mv = this.classWriter.visitMethod(ACC_PUBLIC + +ACC_FINAL, "call",
-          "(Ljava/util/Map;" + argsDec + ")Lcom/googlecode/aviator/runtime/type/AviatorObject;",
-          "(Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;" + argsDec
+          "(Ljava/utils/Map;" + argsDec + ")Lcom/googlecode/aviator/runtime/type/AviatorObject;",
+          "(Ljava/utils/Map<Ljava/lang/String;Ljava/lang/Object;>;" + argsDec
               + ")Lcom/googlecode/aviator/runtime/type/AviatorObject;",
           null);
       this.mv.visitCode();
@@ -162,10 +162,10 @@ public class LambdaGenerator implements CodeGenerator {
       this.mv.visitVarInsn(ALOAD, arrayIndex);
       this.mv.visitMethodInsn(INVOKEVIRTUAL,
           "com/googlecode/aviator/runtime/function/LambdaFunction", "newEnv",
-          "(Ljava/util/Map;[Lcom/googlecode/aviator/runtime/type/AviatorObject;)Ljava/util/Map;");
+          "(Ljava/utils/Map;[Lcom/googlecode/aviator/runtime/type/AviatorObject;)Ljava/utils/Map;");
       // execute body expression
       this.mv.visitMethodInsn(INVOKEINTERFACE, "com/googlecode/aviator/Expression", "execute",
-          "(Ljava/util/Map;)Ljava/lang/Object;");
+          "(Ljava/utils/Map;)Ljava/lang/Object;");
       // get the result
       this.mv.visitMethodInsn(INVOKESTATIC,
           "com/googlecode/aviator/runtime/type/AviatorRuntimeJavaType", "valueOf",

@@ -109,7 +109,7 @@ public class Method {
    *
    * @param method a Java method declaration, without argument names, of the form "returnType name
    *        (argumentType1, ... argumentTypeN)", where the types are in plain Java (e.g. "int",
-   *        "float", "java.util.List", ...). Classes of the java.lang package can be specified by
+   *        "float", "java.utils.List", ...). Classes of the java.lang package can be specified by
    *        their unqualified name; all other classes names must be fully qualified.
    * @return a {@link Method} corresponding to the given Java method declaration.
    * @throws IllegalArgumentException if <code>method</code> could not get parsed.
@@ -123,7 +123,7 @@ public class Method {
    *
    * @param method a Java method declaration, without argument names, of the form "returnType name
    *        (argumentType1, ... argumentTypeN)", where the types are in plain Java (e.g. "int",
-   *        "float", "java.util.List", ...). Classes of the java.lang package may be specified by
+   *        "float", "java.utils.List", ...). Classes of the java.lang package may be specified by
    *        their unqualified name, depending on the defaultPackage argument; all other classes
    *        names must be fully qualified.
    * @param defaultPackage true if unqualified class names belong to the default package, or false

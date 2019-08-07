@@ -25,7 +25,7 @@ import aviator.runtime.type.AviatorRuntimeJavaType;
 
 
 /**
- * sort(list) function to sort java.util.List or array,return a sorted duplicate object
+ * sort(list) function to sort java.utils.List or array,return a sorted duplicate object
  * 
  * @author dennis
  * 

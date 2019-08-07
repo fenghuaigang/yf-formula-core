@@ -60,7 +60,7 @@ public abstract class ClassExpression extends BaseExpression {
   /*
    * (non-Javadoc)
    *
-   * @see com.googlecode.aviator.IExpression#execute(java.util.Map)
+   * @see com.googlecode.aviator.IExpression#execute(java.utils.Map)
    */
   @Override
   public Object execute(Map<String, Object> map) {

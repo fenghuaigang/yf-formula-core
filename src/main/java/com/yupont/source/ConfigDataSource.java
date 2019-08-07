@@ -39,13 +39,13 @@ public class ConfigDataSource {
 	private String createUserId;
 
 	/** 创建时间 */
-	private Date createTime;
+	private String createTime;
 
 	/** 修改人ID */
 	private String updateUserId;
 
 	/** 修改时间 */
-	private Date updateTime;
+	private String updateTime;
 
 	/** 版本号 */
 	private Integer version;
@@ -141,28 +141,12 @@ public class ConfigDataSource {
 		this.createUserId = createUserId;
 	}
 
-	public Date getCreateTime() {
-		return createTime;
-	}
-
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
-
 	public String getUpdateUserId() {
 		return updateUserId;
 	}
 
 	public void setUpdateUserId(String updateUserId) {
 		this.updateUserId = updateUserId;
-	}
-
-	public Date getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
 	}
 
 	public Integer getVersion() {
@@ -180,5 +164,20 @@ public class ConfigDataSource {
 	public void setConfigDataTables(List<ConfigDataTable> configDataTables) {
 		this.configDataTables = configDataTables;
 	}
-	
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
 }

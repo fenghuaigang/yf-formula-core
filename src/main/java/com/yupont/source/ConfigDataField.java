@@ -50,7 +50,7 @@ public class ConfigDataField {
     /** 
      * 属性创建时间
      */  
-    private Timestamp createTime;    
+    private String createTime;
     /** 
      * 属性修改人
      */  
@@ -58,7 +58,7 @@ public class ConfigDataField {
     /** 
      * 属性修改时间
      */  
-    private Timestamp updateTime;    
+    private String updateTime;
     /** 
      * 属性版本
      */  
@@ -129,29 +129,32 @@ public class ConfigDataField {
 	public void setCreateUserId(String createUserId) {
 		this.createUserId = createUserId;
 	}
-	public Timestamp getCreateTime() {
-		return createTime;
-	}
-	public void setCreateTime(Timestamp createTime) {
-		this.createTime = createTime;
-	}
 	public String getUpdateUserId() {
 		return updateUserId;
 	}
 	public void setUpdateUserId(String updateUserId) {
 		this.updateUserId = updateUserId;
 	}
-	public Timestamp getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(Timestamp updateTime) {
-		this.updateTime = updateTime;
-	}
 	public Short getVersion() {
 		return version;
 	}
 	public void setVersion(Short version) {
 		this.version = version;
-	}    
-    
+	}
+
+	public String getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
 }
