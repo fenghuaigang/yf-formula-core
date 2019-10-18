@@ -5,7 +5,7 @@ apply plugin: 'spring-boot'
 sourceCompatibility = 1.8 // Java版本
 targetCompatibility = 1.8 // 编译版本
 group = 'com.sgcc'
-version = '2.9' // 版本
+version = '3.0' // 版本
 buildscript {
     repositories {
         maven { url 'http://192.168.60.23:9012/repository/maven-public/' }
