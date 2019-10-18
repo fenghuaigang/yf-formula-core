@@ -49,6 +49,9 @@ public class ConfigDataSource {
 
 	/** 版本号 */
 	private Integer version;
+
+	/** 数据源编码 */
+	private String sourceCode;
 	
 	/** 数据表*/
 	private List<ConfigDataTable> configDataTables;

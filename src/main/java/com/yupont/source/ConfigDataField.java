@@ -59,6 +59,12 @@ public class ConfigDataField {
      * 属性修改时间
      */  
     private String updateTime;
+
+	/**
+	 * 数据项编码
+	 */
+	private String dataItemCode;
+
     /** 
      * 属性版本
      */  

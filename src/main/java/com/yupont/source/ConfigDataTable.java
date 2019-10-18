@@ -44,6 +44,9 @@ public class ConfigDataTable {
     /** 数据集数据集成频率 */
     private  String dataCycleTime;
 
+	/** 数据集编码 */
+	private String tableCode;
+
     /** 数据项*/
     private List<ConfigDataField> configDataFields;
     
