@@ -163,4 +163,12 @@ public class ConfigDataField {
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
+
+	public String getDataItemCode() {
+		return dataItemCode;
+	}
+
+	public void setDataItemCode(String dataItemCode) {
+		this.dataItemCode = dataItemCode;
+	}
 }

@@ -162,4 +162,11 @@ public class ConfigDataTable {
 		this.dataCycleTime = dataCycleTime;
 	}
 
+	public String getTableCode() {
+		return tableCode;
+	}
+
+	public void setTableCode(String tableCode) {
+		this.tableCode = tableCode;
+	}
 }

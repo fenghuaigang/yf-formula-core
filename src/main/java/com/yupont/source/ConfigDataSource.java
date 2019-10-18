@@ -183,4 +183,12 @@ public class ConfigDataSource {
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
 	}
+
+	public String getSourceCode() {
+		return sourceCode;
+	}
+
+	public void setSourceCode(String sourceCode) {
+		this.sourceCode = sourceCode;
+	}
 }
