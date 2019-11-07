@@ -31,7 +31,7 @@ public abstract class MultiFunction implements Function {
 	private BigDecimal[] convertBigDecimals(List<Expression> args) {
 		BigDecimal[] doubles = new BigDecimal[args.size()];
 		for (int i = 0; i < args.size(); i++) {
-			doubles[i] = new BigDecimal(args.get(i).evaluate() + "");
+			doubles[i] = args.get(i).evaluate2();
 		}
 		return doubles;
 	}
