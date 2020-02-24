@@ -11,6 +11,7 @@ package parsiii.eval;
 import java.math.BigDecimal;
 
 import com.yupont.util.TextUtil;
+import parsiii.tokenizer.ParseException;
 
 /**
  * Represents a binary operation.
@@ -133,6 +134,7 @@ public class BinaryOperation implements Expression {
 		double b = right.evaluate2().doubleValue();
 		String l = left.evaluate3();
 		String r = right.evaluate3();
+
 		switch (op) {
 		case ADD:
 			return a + b;
@@ -158,21 +160,43 @@ public class BinaryOperation implements Expression {
 			if(TextUtil.isNum(l) && TextUtil.isNum(r)){
 				return Math.abs(a - b) < EPSILON ? 1 : 0;
 			}else{
-				return String.valueOf(""+l).equals(""+r)?1:0;
+				return (""+l).equals(""+r)?1:0;
 			}
 		case NEQ:
 			if(TextUtil.isNum(l) && TextUtil.isNum(r)){
 				return Math.abs(a - b) > EPSILON ? 1 : 0;
 			}else{
-				return String.valueOf(""+l).equals(""+r)?0:1;
+				return (""+l).equals(""+r)?0:1;
 			}
 		case AND:
+			if(!TextUtil.isNum(l)){
+				a = getEvaluate(l);
+			}
+			if(!TextUtil.isNum(r)){
+				b =  getEvaluate(r);
+			}
 			return Math.abs(a) > 0 && Math.abs(b) > 0 ? 1 : 0;
 		case OR:
+			if(!TextUtil.isNum(l)){
+				a = getEvaluate(l);
+			}
+			if(!TextUtil.isNum(r)){
+				b =  getEvaluate(r);
+			}
 			return Math.abs(a) > 0 || Math.abs(b) > 0 ? 1 : 0;
 		default:
 			throw new UnsupportedOperationException(String.valueOf(op));
 		}
+	}
+
+	private double getEvaluate(String l) {
+		double evaluate = 0;
+		try {
+			evaluate = Parser.parse(l).evaluate2().doubleValue();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return evaluate;
 	}
 
 	@Override
