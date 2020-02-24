@@ -40,6 +40,7 @@ import java.util.*;
  */
 public class Parser {
 
+    private static final String BFB = "%";
     private final Scope scope;
     private List<parsiii.tokenizer.ParseError> errors = new ArrayList<>();
     private parsiii.tokenizer.Tokenizer tokenizer;
@@ -141,6 +142,9 @@ public class Parser {
      * @throws parsiii.tokenizer.ParseException if the expression contains one or more errors
      */
     public static Expression parse(String input, Scope scope) throws parsiii.tokenizer.ParseException {
+        if(input.contains(BFB)){
+            input = input.replaceAll(BFB,"*0.01");
+        }
         return new Parser(new StringReader(input), scope).parse();
     }
 
