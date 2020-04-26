@@ -26,6 +26,15 @@ public class DatabaseMeta extends ConfigDataSource implements SourceMeta {
 
 	private static final Log logger = LogFactory.getLog(DatabaseMeta.class);
 
+	public static class DataSourceType{
+		//分布式数据仓库，使用redis
+		public static final String DC_SOURCE 				= "0";
+		public static final String LOCAL_FILE 				= "01";
+		public static final String FTP_FILE 				= "02";
+		public static final String DATA_SOURCE 				= "03";
+		public static final String REST_SERVICE				= "04";
+	}
+
 	public enum TYPE {
 		/**数据源类型枚举：EFILE, JDBC, HBASE, REDIS, KAFKA...*/
 		EFILE, JDBC, HBASE, REDIS, KAFKA;
