@@ -4,11 +4,11 @@ apply plugin: 'spring-boot'
 
 sourceCompatibility = 1.8 // Java版本
 targetCompatibility = 1.8 // 编译版本
-group = 'com.sgcc'
-version = '3.5' // 版本
+group = 'com.yf'
+version = '1.0' // 版本
 buildscript {
     repositories {
-        maven { url 'http://192.168.60.23:9012/repository/maven-public/' }
+        maven { url 'http://127.0.0.1:9012/repository/maven-public/' }
     }
     dependencies {
         //使用1.4.2.RELEASE版本的Spring框架
@@ -24,7 +24,7 @@ jar {
 // 仓库地址
 repositories {
     mavenLocal()
- 	maven { url 'http://192.168.60.23:9012/repository/maven-public/' }
+ 	maven { url 'http://127.0.0.1:9012/repository/maven-public/' }
  	mavenCentral()
 }
 // 引用包的地方
